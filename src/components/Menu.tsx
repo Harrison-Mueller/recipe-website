@@ -1,3 +1,6 @@
+import '../css/Menu.css'
+
+
 function Menu() {
 
     return (

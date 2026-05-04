@@ -1,3 +1,5 @@
+import '../css/RecipeList.css'
+
 import RecipeCard from './RecipeCard'
 
 

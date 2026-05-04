@@ -1,0 +1,14 @@
+#recipe-list {
+    /* display: inline-block; */
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    top: 0;
+    width: 50vw;
+    margin: 0;
+    padding-right: 5vw;
+    float: right;
+    overflow-y: scroll;
+    height: 100vh;
+    /* text-align: right; */
+}

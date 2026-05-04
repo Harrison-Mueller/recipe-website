@@ -1,3 +1,5 @@
+import '../css/RecipeBoard.css'
+
 function RecipeBoard() {
 
     return (
