@@ -1,6 +1,10 @@
 import '../css/RecipeCard.css'
 
-function RecipeCard() {
+interface Props {
+    JSON?: string
+}
+
+function RecipeCard({JSON}: Props) {
 
     return (
         <div className="recipe-card">

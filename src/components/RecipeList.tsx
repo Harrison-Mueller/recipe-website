@@ -2,15 +2,22 @@ import '../css/RecipeList.css'
 
 import RecipeCard from './RecipeCard'
 
+interface Props {
+    recipeJSONList?: string[]
+}
 
-function RecipeList() {
+function RecipeList({recipeJSONList}: Props) {
 
     let cards = [];
 
-    for(let i = 0; i < 25; i++) {
-        cards.push(
-            <RecipeCard key={i} />
-        );
+    if(recipeJSONList) {
+        for(let i = 0; i < recipeJSONList.length; i++) {
+            cards.push(
+                <RecipeCard key={i} JSON={recipeJSONList[i]}/>
+            );
+        }
+    } else {
+        <RecipeCard key={12345}/>
     }
 
     return (
