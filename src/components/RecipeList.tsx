@@ -1,12 +1,16 @@
+import { useContext } from 'react';
+import { context } from './Provider';
 import '../css/RecipeList.css'
 
 import RecipeCard from './RecipeCard'
 
 interface Props {
-    recipeJSONList?: string[]
+    recipeJSONList: Promise<string[]>;
 }
 
-function RecipeList({recipeJSONList}: Props) {
+function RecipeList() {
+
+    const { recipeJSONList, setRecipeJSONList } = context();
 
     let cards = [];
 
@@ -21,9 +25,12 @@ function RecipeList({recipeJSONList}: Props) {
     }
 
     return (
-        <div id="recipe-list">
-        {cards}
-        </div>
+        <>
+            {/* <h1>Test: {recipeJSONList[0]}</h1> */}
+            <div id="recipe-list">
+            {cards}
+            </div>
+        </> 
     )
 }
 
