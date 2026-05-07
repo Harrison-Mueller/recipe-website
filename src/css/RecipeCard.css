@@ -5,6 +5,7 @@
     background-color: white;
     border-radius: 25px;
     margin: 10px;
+    vertical-align: top;
 }
 
 .recipe-card-image {
@@ -14,5 +15,8 @@
 }
 
 .recipe-card-name {
-    margin-left: 10px;
+    margin: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    /* height:100px; */
 }
