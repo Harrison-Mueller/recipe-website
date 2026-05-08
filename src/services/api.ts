@@ -62,8 +62,20 @@ export const getRecents = async (setRecipeList: (recipeJSONList: Meal[]) => void
     setRecipeList(recipeList);
 };
 
-export const searchRecipes = async (setRecipeList: (recipeJSONList: Meal[]) => void) => {
-    // setRecipeList([{strMeal: "APISearch"}]);
+export const searchRecipes = async (setRecipeList: (recipeJSONList: Meal[]) => void, searchText: string) => {
+    setRecipeList(Array.from({ length: 25 }, () => ({} as Meal)));
+    let recipeList: Meal[] = [];
+    await fetch(API_URL + "search.php?s=" + searchText, {method: "POST"})
+        .then(function(response) { return response.json(); })
+        .then(function(json) {
+            recipeList = json.meals;
+        });
+
+    if(recipeList == null || recipeList.length === 0) {
+        setRecipeList([{idMeal: "0", strMeal: "No Meals Found"}]);
+    } else {
+        setRecipeList(recipeList);
+    }
 };
 
 
