@@ -23,7 +23,23 @@ export const getRandom = async (setRecipeList: (recipeJSONList: Meal[]) => void)
 };
 
 export const getFavorites = async (setRecipeList: (recipeJSONList: Meal[]) => void) => {
-    // setRecipeList([{strMeal: "APIFavorites"}]);
+    let jsonFavorites: string|null = localStorage.getItem("favoriteRecipes");
+    if(jsonFavorites === null) {
+        setRecipeList([{idMeal: "0", strMeal: "No Favorite Recipes"}]);
+        return;
+    }
+    let favorites = JSON.parse(jsonFavorites);
+    
+    setRecipeList(Array.from({ length: favorites.length }, () => ({} as Meal)));
+    let recipeList: Meal[] = new Array(favorites.length);
+    for(let i = 0; i < favorites.length; i++) {
+        await fetch(API_URL + "lookup.php?i=" + favorites[i], {method: "POST"})
+            .then(function(response) { return response.json(); })
+            .then(function(json) {
+            recipeList[favorites.length - 1 - i] = json.meals[0];
+        });
+    }
+    setRecipeList(recipeList);
 };
 
 export const getRecents = async (setRecipeList: (recipeJSONList: Meal[]) => void) => {
@@ -73,8 +89,45 @@ export function addRecent(meal: Meal) {
             recents.shift();
         }
     }
-
-
-
     localStorage.setItem("recentRecipes", JSON.stringify(recents));
+
+
+    let jsonFavorites: string|null = localStorage.getItem("favoriteRecipes");
+    let favorites: string[] = [];
+    if(jsonFavorites === null) {
+        return;
+    }
+    favorites = JSON.parse(jsonFavorites);
+
+    
+    if(favorites.includes(meal.idMeal)) {
+        console.log("Update Fav recent")
+        favorites.splice(favorites.indexOf(meal.idMeal), 1);
+        favorites.push(meal.idMeal);
+        localStorage.setItem("favoriteRecipes", JSON.stringify(favorites));
+    }
+
+
+
+}
+
+export function addFavorite(meal: Meal) {
+    if(meal.idMeal === "0" || meal.idMeal == null) {
+        return;
+    }
+    
+    let jsonFavorites: string|null = localStorage.getItem("favoriteRecipes");
+    let favorites: string[] = [];
+    if(jsonFavorites != null) {
+        favorites = JSON.parse(jsonFavorites);
+    }
+
+    if(favorites.includes(meal.idMeal)) {
+        favorites.splice(favorites.indexOf(meal.idMeal), 1);
+    }
+    favorites.push(meal.idMeal);
+
+
+
+    localStorage.setItem("favoriteRecipes", JSON.stringify(favorites));
 }

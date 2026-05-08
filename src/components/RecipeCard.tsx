@@ -1,5 +1,5 @@
 import '../css/RecipeCard.css'
-import { addRecent } from '../services/api';
+import { addFavorite, addRecent } from '../services/api';
 
 export interface Meal {
     idMeal: string;
@@ -24,15 +24,20 @@ function RecipeCard({JSON}: Props) {
         JSON.strMealThumb = "ImageLoading.svg";
     }
 
-    const handleClick = () => {
+    const addToRecent = () => {
         console.log("Clicked on " + JSON.strMeal);
         addRecent(JSON as Meal);
     }
 
+    const addToFavorite = () => {
+        console.log("Clicked on " + JSON.strMeal);
+        addFavorite(JSON as Meal);
+    }
+
     return (
-        <div className="recipe-card" onClick={handleClick}>
-            <img className="recipe-card-image" src={JSON.strMealThumb} alt={JSON.strMeal}></img>
-            <h3 className="recipe-card-name">{JSON.strMeal}</h3>
+        <div className="recipe-card" >
+            <img className="recipe-card-image" src={JSON.strMealThumb} alt={JSON.strMeal} onClick={addToRecent}></img>
+            <h3 className="recipe-card-name" onClick={addToFavorite}>{JSON.strMeal}</h3>
         </div>
     )
 }
