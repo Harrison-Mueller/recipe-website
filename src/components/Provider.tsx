@@ -5,6 +5,12 @@ import type { Meal } from "./RecipeCard";
 interface ProviderProps {
     recipeJSONList: Meal[];
     setRecipeJSONList: (recipeJSONList: Meal[]) => void;
+
+    recipeBoardJSON: Meal | null;
+    setRecipeBoardJSON: (recipeBoardJSON: Meal | null) => void;
+
+    currentPage: "list" | "board";
+    setCurrentPage: (currentPage: "list" | "board") => void;
 }
 // Create a UserContext
 const UserContext = createContext<ProviderProps | undefined>(undefined);
@@ -14,9 +20,12 @@ interface Prov {
 }
 
 function Provider({ children }: Prov) {
-    const [recipeJSONList, setRecipeJSONList] = useState<Meal[]>([{ strMeal: "Anjali Sharma" }]);
+    const [recipeJSONList, setRecipeJSONList] = useState<Meal[]>([{ strMeal: "Waiting...", idMeal: "0"}]);
+    const [recipeBoardJSON, setRecipeBoardJSON] = useState<Meal | null>(null);
+    const [currentPage, setCurrentPage] = useState<"list" | "board">("list");
+
     return (
-        <UserContext.Provider value={{ recipeJSONList, setRecipeJSONList }}>
+        <UserContext.Provider value={{ recipeJSONList, setRecipeJSONList, recipeBoardJSON, setRecipeBoardJSON, currentPage, setCurrentPage }}>
             {children}
         </UserContext.Provider>
     );

@@ -7,12 +7,29 @@ import { useState } from 'react';
 function Menu() {
     const [searchTerm, setSearchTerm] = useState('');
     const { recipeJSONList, setRecipeJSONList } = context();
+    const { currentPage, setCurrentPage } = context();
+
 
     const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        if(currentPage != "list") {
+            return;
+        }
         if (searchTerm.trim()) {
             searchRecipes(setRecipeJSONList, searchTerm);
         }
+    }
+
+    const favoritesButton = () => {
+        getFavorites(setRecipeJSONList);
+    }
+
+    const recentsButton = () => {
+        getRecents(setRecipeJSONList);
+    }
+
+    const refreshButton = () => {
+        getRandom(setRecipeJSONList);
     }
 
     return ( 
@@ -25,9 +42,9 @@ function Menu() {
                     onChange={(e) => setSearchTerm(e.target.value)} >
                 </input>
             </form>
-            <button className="menu-button" id="favorites-menu-button" onClick={() => getFavorites(setRecipeJSONList)}>favorites</button>
-            <button className="menu-button" id="recents-menu-button" onClick={() => getRecents(setRecipeJSONList)}>recents</button>
-            <button className="menu-button" id="refresh-menu-button" onClick={() => getRandom(setRecipeJSONList)}>refresh</button>
+            <button className="menu-button" id="favorites-menu-button" onClick={currentPage == "list" ? favoritesButton : undefined}>favorites</button>
+            <button className="menu-button" id="recents-menu-button" onClick={currentPage == "list" ? recentsButton : undefined}>recents</button>
+            <button className="menu-button" id="refresh-menu-button" onClick={currentPage == "list" ? refreshButton : undefined}>refresh</button>
         </div>
     )
 }

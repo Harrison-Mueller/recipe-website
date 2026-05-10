@@ -4,12 +4,10 @@ import '../css/RecipeList.css'
 
 import RecipeCard from './RecipeCard'
 
-interface Props {
-    recipeJSONList: Promise<string[]>;
-}
 
 function RecipeList() {
 
+    const { currentPage, setCurrentPage } = context();
     const { recipeJSONList, setRecipeJSONList } = context();
 
     let cards = [];
@@ -27,7 +25,7 @@ function RecipeList() {
     return (
         <>
             {/* <h1>Test: {recipeJSONList[0]}</h1> */}
-            <div id="recipe-list">
+            <div id="recipe-list" className={currentPage == "list" ? "active" : ""}>
             {cards}
             </div>
         </> 

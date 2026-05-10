@@ -1,0 +1,30 @@
+.recipe-board-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    overflow-y: scroll;
+    background: none;
+    /* pointer-events: none; */
+
+
+    display: none;
+}
+
+.recipe-board-area.active {
+    display: block;
+}
+
+.recipe-board {
+    background-color: rgb(230, 173, 99);
+    width: 50vw;
+    height: 2000px;
+    margin: auto;
+    margin-top: 50px;
+    border-radius: 30px;
+    box-shadow: inset 0px 0px 0px 10px rgba(255, 255, 255, 0.249);
+    padding: 20px;
+    /* pointer-events: auto; */
+}
