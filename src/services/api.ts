@@ -9,17 +9,27 @@ const delay = (ms: number): Promise<void> => {//simulates delay TEMP
 
 export const getRandom = async (setRecipeList: (recipeJSONList: Meal[]) => void) => {
     setRecipeList(Array.from({ length: 25 }, () => ({} as Meal)));
-    let recipeList: Meal[] = new Array(25);
-    for(let i = 0; i < 25; i++) {
-        await fetch(API_URL + "random.php", {method: "POST"})
+
+    let recipeList: Meal[] = [];
+    let promises = Array.from({ length: 25 }, () => 
+        fetch(API_URL + "random.php", {method: "POST"})
             .then(function(response) { return response.json(); })
             .then(function(json) {
-            recipeList[i] = json.meals[0];
-        });
-    }
-    setRecipeList(recipeList);
-    
-    // setRecipeList(["APIRandom", "1", "2", "3"]);
+                recipeList.push(json.meals[0]);
+                console.log("Meal: " + json.meals[0].strMeal);
+            })
+            .catch(function(error) {
+                console.error("Error fetching random meal:", error);
+            })
+    );
+
+    Promise.all(promises).then(() => {
+        if(recipeList.length == 0) {
+            setRecipeList([{idMeal: "0", strMeal: "Error Fetching Meals"}]);
+            return;
+        }
+        setRecipeList(recipeList);
+    });
 };
 
 export const getFavorites = async (setRecipeList: (recipeJSONList: Meal[]) => void) => {
@@ -31,15 +41,26 @@ export const getFavorites = async (setRecipeList: (recipeJSONList: Meal[]) => vo
     let favorites = JSON.parse(jsonFavorites);
     
     setRecipeList(Array.from({ length: favorites.length }, () => ({} as Meal)));
+
     let recipeList: Meal[] = new Array(favorites.length);
-    for(let i = 0; i < favorites.length; i++) {
-        await fetch(API_URL + "lookup.php?i=" + favorites[i], {method: "POST"})
+    let promises = favorites.map((favoriteId: string, i: number) =>
+        fetch(API_URL + "lookup.php?i=" + favoriteId, {method: "POST"})
             .then(function(response) { return response.json(); })
             .then(function(json) {
-            recipeList[favorites.length - 1 - i] = json.meals[0];
-        });
-    }
-    setRecipeList(recipeList);
+                recipeList[favorites.length - 1 - i] = json.meals[0];
+            })
+            .catch(function(error) {
+                console.error("Error fetching random meal:", error);
+            })
+    );
+
+    Promise.all(promises).then(() => {
+        if(recipeList.length == 0) {
+            setRecipeList([{idMeal: "0", strMeal: "Error Fetching Meals"}]);
+            return;
+        }
+        setRecipeList(recipeList);
+    });
 };
 
 export const getRecents = async (setRecipeList: (recipeJSONList: Meal[]) => void) => {
@@ -50,16 +71,38 @@ export const getRecents = async (setRecipeList: (recipeJSONList: Meal[]) => void
     }
     let recents = JSON.parse(jsonRecents);
     
+    // setRecipeList(Array.from({ length: recents.length }, () => ({} as Meal)));
+    // let recipeList: Meal[] = new Array(recents.length);
+    // for(let i = 0; i < recents.length; i++) {
+    //     await fetch(API_URL + "lookup.php?i=" + recents[i], {method: "POST"})
+    //         .then(function(response) { return response.json(); })
+    //         .then(function(json) {
+    //         recipeList[recents.length - 1 - i] = json.meals[0];
+    //     });
+    // }
+    // setRecipeList(recipeList);
+
     setRecipeList(Array.from({ length: recents.length }, () => ({} as Meal)));
+
     let recipeList: Meal[] = new Array(recents.length);
-    for(let i = 0; i < recents.length; i++) {
-        await fetch(API_URL + "lookup.php?i=" + recents[i], {method: "POST"})
+    let promises = recents.map((recentId: string, i: number) =>
+        fetch(API_URL + "lookup.php?i=" + recents[i], {method: "POST"})
             .then(function(response) { return response.json(); })
             .then(function(json) {
-            recipeList[recents.length - 1 - i] = json.meals[0];
-        });
-    }
-    setRecipeList(recipeList);
+                recipeList[recents.length - 1 - i] = json.meals[0];
+            })
+            .catch(function(error) {
+                console.error("Error fetching random meal:", error);
+            })
+    );
+
+    Promise.all(promises).then(() => {
+        if(recipeList.length == 0) {
+            setRecipeList([{idMeal: "0", strMeal: "Error Fetching Meals"}]);
+            return;
+        }
+        setRecipeList(recipeList);
+    })
 };
 
 export const searchRecipes = async (setRecipeList: (recipeJSONList: Meal[]) => void, searchText: string) => {

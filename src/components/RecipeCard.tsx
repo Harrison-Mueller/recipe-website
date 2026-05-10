@@ -90,7 +90,7 @@ function RecipeCard({JSON}: Props) {
     }
 
     return (
-        <div className="recipe-card" onClick={currentPage == "list" ? openRecipe : undefined}>
+        <div className="recipe-card" onClick={(currentPage == "list" && JSON.idMeal !== "0") ? openRecipe : undefined}>
             <img className="recipe-card-image" src={JSON.strMealThumb} alt={JSON.strMeal}></img>
             <h3 className="recipe-card-name">{JSON.strMeal}</h3>
         </div>
