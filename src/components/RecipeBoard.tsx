@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import '../css/RecipeBoard.css'
 import { context } from './Provider';
 import type { Meal } from "./RecipeCard";
@@ -10,14 +11,20 @@ interface Props {
 function RecipeBoard() {
     const { currentPage, setCurrentPage } = context();
     const { recipeBoardJSON, setRecipeBoardJSON } = context();
+    const { boardScroll, setBoardScroll } = context();
     let JSON = recipeBoardJSON;
+
+    const divRef = useRef<HTMLDivElement>(null);
+    const handleScroll = () => {
+        setBoardScroll(divRef.current ? divRef.current.scrollTop / divRef.current.scrollHeight : 0);
+    };
 
     const exitBoard = () => {
         setCurrentPage("list");
     }
 
     return (
-        <div className={"recipe-board-area " + (currentPage == "board" ? "active" : "")}>
+        <div ref={divRef} onScroll={handleScroll} className={"recipe-board-area " + (currentPage == "board" ? "active" : "")}>
             <div className="recipe-board">
                 <button id="board-back-button" onClick={currentPage == "board" ? exitBoard : undefined}>Back</button>
                 <h2>{JSON?.strMeal}</h2>

@@ -6,4 +6,15 @@
     height: 100%;
     z-index: -1;
     background-color: rgb(179, 185, 206);
+    overflow:hidden;
+}
+
+.background-image {
+    height: 136vh;
+    /* height: 1599px; */
+    /* width: 1440px; */
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* border: red solid 2px; */
 }
