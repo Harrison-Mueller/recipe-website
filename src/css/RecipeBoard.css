@@ -18,13 +18,148 @@
 }
 
 .recipe-board {
-    background-color: rgb(230, 173, 99);
+    /* background-color: rgb(255, 255, 255); */
+    background-image: url("/RecipeBoard/WoodTexture.png");
+    background-repeat: repeat;
+    background-size: 50% auto;
     width: 50vw;
-    height: 2000px;
+    height: fit-content;
     margin: auto;
     margin-top: 50px;
     border-radius: 30px;
-    box-shadow: inset 0px 0px 0px 10px rgba(255, 255, 255, 0.249);
+    box-shadow: inset 0px 0px 0px 10px rgba(200, 144, 101, 160),
+                0px 0px 0px 3px #D2A072;
     padding: 20px;
     /* pointer-events: auto; */
+    margin-bottom: 200px;
 }
+
+.recipe-picture {
+    width: 250px;
+    height: 250px;
+    background-color: rgba(224, 175, 116, 0.6);
+    border-radius: 20px;
+    border: solid 5px #ffffff;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.instructions-header-background {
+    width: 710px;
+    height: 126px;
+    background-image: url("/RecipeBoard/Top.svg");
+    background-size: 100% 160px;
+    margin: auto;
+    margin-bottom: 0;
+}
+
+.instructions-header {
+    transform: translate(50px, 80px);
+}
+
+.instructions-background {
+    width: 100%;
+    /* background-color: purple; */
+    margin: auto;
+    /* height: round(up, fit-content, 160px); */
+    height: fit-content;
+    background-image: url("/RecipeBoard/MiddleTile.svg");
+    background-repeat: repeat-y;
+    background-size: 100% 160px;
+    /* font-size: 28px; */
+    line-height: 40px;
+    margin-top: 0;
+    margin-bottom: 50px;
+}
+
+.instructions-text {
+    width: 50%;
+    margin: auto;
+    font-size: 24px;
+    transform: translateY(5px);
+}
+
+/* .instructions-footer-background {
+    width: 710px;
+    height: 96px;
+    background-image: url("/RecipeBoard/Bottom.svg");
+    background-size: 100% 160px;
+    margin: auto;
+    margin-top: 0;
+} */
+
+
+.ingredients-header-background {
+    width: 532px;
+    height: 94px;
+    background-image: url("/RecipeBoard/Top.svg");
+    background-size: 100% 120px;
+    margin: auto;
+    margin-bottom: 0;
+}
+
+.ingredients-header {
+    text-align: center;
+    transform: translate(0, 50px);
+}
+
+.ingredients-background {
+    width: 100%;
+    /* background-color: purple; */
+    margin: auto;
+    /* height: round(up, fit-content, 160px); */
+    height: fit-content;
+    background-image: url("/RecipeBoard/MiddleTile.svg");
+    background-repeat: repeat-y;
+    background-size: 100% 120px;
+    /* font-size: 28px; */
+    line-height: 30px;
+    margin-top: 0;
+    margin-bottom: 50px;
+}
+
+.ingredients-list {
+    margin:0;
+    padding: 0px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    list-style: none;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.ingredients-list li {
+    position: relative;
+    width: 532px;
+    margin: auto;
+}
+
+.ingredient-image {
+    position: absolute;
+    top: -50%;
+    /* transform: translateY(-50%); */
+    width: 60px;
+    height: 60px;
+
+
+}
+
+.ingredients-list li:nth-child(even) .ingredient-image {
+    right: 40px;
+}
+
+.ingredients-list li:nth-child(odd) .ingredient-image {
+    left: 40px;
+}
+
+.ingredients-list li:nth-child(4n + 0) .ingredient-image { transform: translateX(-10px) rotate(8deg) }
+.ingredients-list li:nth-child(4n + 1) .ingredient-image { transform: translateX(10px) rotate(6deg) }
+.ingredients-list li:nth-child(4n + 2) .ingredient-image { transform: translateX(0px) rotate(-7deg) }
+.ingredients-list li:nth-child(4n + 3) .ingredient-image { transform: translateX(0px)rotate(-8deg) }
+

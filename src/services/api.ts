@@ -16,7 +16,7 @@ export const getRandom = async (setRecipeList: (recipeJSONList: Meal[]) => void)
             .then(function(response) { return response.json(); })
             .then(function(json) {
                 recipeList.push(json.meals[0]);
-                console.log("Meal: " + json.meals[0].strMeal);
+                // console.log("Meal: " + json.meals[0].strMeal);
             })
             .catch(function(error) {
                 console.error("Error fetching random meal:", error);
@@ -156,7 +156,7 @@ export function addRecent(meal: Meal) {
 
     
     if(favorites.includes(meal.idMeal)) {
-        console.log("Update Fav recent")
+        // console.log("Update Fav recent")
         favorites.splice(favorites.indexOf(meal.idMeal), 1);
         favorites.push(meal.idMeal);
         localStorage.setItem("favoriteRecipes", JSON.stringify(favorites));
