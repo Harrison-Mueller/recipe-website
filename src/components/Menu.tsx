@@ -33,8 +33,8 @@ function Menu() {
     }
 
     return ( 
-        <div id="menu">
-            <form onSubmit={handleSearchSubmit}>
+        <div id="menu" className={currentPage == "list" ? "active" : ""}>
+            <form className="search-form" onSubmit={handleSearchSubmit}>
                 <input type="search" 
                     id="search-bar" 
                     placeholder="Search 🔍" 
@@ -42,9 +42,11 @@ function Menu() {
                     onChange={(e) => setSearchTerm(e.target.value)} >
                 </input>
             </form>
-            <button className="menu-button" id="favorites-menu-button" onClick={currentPage == "list" ? favoritesButton : undefined}>favorites</button>
-            <button className="menu-button" id="recents-menu-button" onClick={currentPage == "list" ? recentsButton : undefined}>recents</button>
-            <button className="menu-button" id="refresh-menu-button" onClick={currentPage == "list" ? refreshButton : undefined}>refresh</button>
+            <div className="menu-buttons">
+                <button className="menu-button" id="favorites-menu-button" onClick={currentPage == "list" ? favoritesButton : undefined}>favorites<img src="/Menu/Tack.svg" /></button>
+                <button className="menu-button" id="recents-menu-button" onClick={currentPage == "list" ? recentsButton : undefined}><img src="/Menu/Hourglass.svg" />recents</button>
+                <button className="menu-button" id="refresh-menu-button" onClick={currentPage == "list" ? refreshButton : undefined}>refresh<img src="/Menu/Refresh.svg" /></button>
+            </div>
         </div>
     )
 }

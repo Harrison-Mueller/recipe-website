@@ -6,6 +6,7 @@
     border-radius: 25px;
     margin: 10px;
     vertical-align: top;
+    cursor: pointer;
 }
 
 .recipe-card-image {
@@ -24,4 +25,5 @@
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
+    color: #474747;
 }
