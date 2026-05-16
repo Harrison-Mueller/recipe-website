@@ -1,4 +1,6 @@
+
 .recipe-board-area {
+
     position: absolute;
     top: 0;
     left: 0;
@@ -18,11 +20,17 @@
 }
 
 .recipe-board {
+    /* --board-width: min(56vh, 95vw); */
+    --board-width: max(min(56vh, 95vw), 45vw);
+    --line-size: min(2rem, var(--board-width) * 0.06);
+    --ingredients-size: min(var(--line-size) * 17, calc(var(--board-width) * 0.9));
+    --instructions-size: min(var(--line-size) * 21, calc(var(--board-width) * 0.9));
+
     /* background-color: rgb(255, 255, 255); */
     background-image: url("/RecipeBoard/WoodTexture.png");
     background-repeat: repeat;
     background-size: 50% auto;
-    width: 56vh;
+    width: var(--board-width);
     height: fit-content;
     margin: auto;
     margin-top: 5vh;
@@ -35,7 +43,7 @@
 }
 
 .recipe-picture {
-    width: 40%;
+    width: calc(var(--ingredients-size) * 0.5);
     aspect-ratio: 1/1;
     background-color: rgba(224, 175, 116, 0.6);
     border-radius: 8%;
@@ -45,16 +53,17 @@
 }
 
 .recipe-board h2 {
-    font-size: 32px;
+    font-size: calc(var(--line-size));
     font-weight: bold;
 }
+
 
 /* INGREDIENTS */
 
 .ingredients-header-area {
     position: relative;
     height: fit-content;
-    width: 80%;
+    width: var(--ingredients-size);
     margin: 0;
     margin: auto;
     padding: 0;
@@ -64,7 +73,7 @@
 .ingredients-header-background {
 
     width: 100%;
-    height: 4rem;
+    height: calc(var(--line-size) * 1.6);
     margin: 0;
     margin: auto;
     z-index: 2;
@@ -72,11 +81,14 @@
 
 .ingredients-header {
     position: absolute;
+    width: 90%;
     bottom: 25%;
-    left: 6%;
-    margin: 0;
+    left: 0;
+    margin: auto;
     padding: 0;
     z-index: 3;
+    text-align: center;
+    /* height: fit-content; */
 
     white-space: nowrap;
 }
@@ -84,9 +96,10 @@
 .ingredients-area{
     position: relative;
     height: fit-content;
-    width: 80%;
+    width: var(--ingredients-size);
     margin: 0;
     margin: auto;
+    line-height: 0;
 }
 
 .ingredients-background {
@@ -103,7 +116,7 @@
 
 .ingredients-background img {
     display: block;
-    height: 10rem;
+    height: calc(var(--line-size) * 4);
     width: 100%;
     object-fit: fill;
     margin: 0;
@@ -112,7 +125,7 @@
 
 img.ingredients-footer-background {
     width: 100%;
-    height: 2.8rem;
+    height: calc(var(--line-size) * 1.12);
     object-fit: fill;
     margin: 0;
     padding: 0;
@@ -123,24 +136,24 @@ img.ingredients-footer-background {
 
     width: 100%;
     margin: auto;
-    font-size: 24px;
-    transform: translateY(5px);
+    /* transform: translateY(5px); */
     font-family: sans-serif;
     z-index: 3;
-    line-height: 2.5rem;
+    line-height: var(--line-size);
     margin-bottom: 250px;
     text-align: center;
 }
 
 .ingredients-list {
-    width: 100%;
+    width: 90%;
     margin:auto;
     padding: 0px;
-    padding-top: 30px;
+    padding-top: var(--line-size);
     padding-bottom: 30px;
     list-style: none;
     text-align: center;
-    font-size: 22px;
+    font-size: calc(var(--line-size) * 0.6);
+
     font-weight:bold;
     text-transform: capitalize;
 }
@@ -149,33 +162,95 @@ img.ingredients-footer-background {
 
 .ingredients-list li {
     position: relative;
-    width: 532px;
+    width: 70%;
     margin: auto;
     font-family: sans-serif;
+    /* display: flex; */
+    /* clear:both; */
+    display: flex;
+    background-color: white;;
 }
+
+.ingredients-list li::after {
+    content : "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) translateY(calc(var(--line-size) * -0.05));
+    /* transform: translatey(-1px); */
+    top: 0;
+    height: 100%;
+    width: 101%;
+    border-top: rgb(218, 218, 218) solid calc(var(--line-size) * 0.1);
+
+}
+
+.ingredient {
+    /* margin-left: auto; */
+    /* display: inline; */
+    font-family: sans-serif;
+    /* position: absolute; */
+    /* right: 50%; */
+    width: 50%;
+    float: left;
+    text-align: right;
+
+    /* text-wrap: newline; */
+    /* z-index: 5; */
+    /* line-height: 1.7rem; */
+    border-right: lightgrey solid calc(var(--line-size) * 0.05);
+    /* border-style: inset; */
+    margin: 0;
+    padding-right: 2%;
+    /* box-sizing: border-box; */
+
+
+}
+
+.measure {
+    /* margin-right: auto; */
+
+    width: 50%;
+    float: right;
+    text-align: left;
+    /* display: inline; */
+    font-family: sans-serif;
+    /* position: absolute;
+    left: 50%; */
+    overflow: hidden;
+    /* z-index: 5; */
+    /* line-height: 1.7rem; */
+    border-left: lightgrey solid calc(var(--line-size) * 0.05);
+    /* box-sizing: border-box; */
+
+
+    padding-left: 2%;
+}
+
 
 .ingredient-image {
     position: absolute;
-    top: -50%;
-    /* transform: translateY(-50%); */
-    width: 60px;
-    height: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: calc(var(--line-size) * 1.5);
+    aspect-ratio: 1/1;
 
-
+    /* display: block; */
 }
 
 .ingredients-list li:nth-child(even) .ingredient-image {
-    right: 40px;
+    left: 100%;
+    /* float: left; */
 }
 
 .ingredients-list li:nth-child(odd) .ingredient-image {
-    left: 40px;
+    right: 100%;
+    /* float: left; */
 }
 
-.ingredients-list li:nth-child(4n + 0) .ingredient-image { transform: translateX(-10px) rotate(8deg) }
-.ingredients-list li:nth-child(4n + 1) .ingredient-image { transform: translateX(10px) rotate(6deg) }
-.ingredients-list li:nth-child(4n + 2) .ingredient-image { transform: translateX(0px) rotate(-7deg) }
-.ingredients-list li:nth-child(4n + 3) .ingredient-image { transform: translateX(0px)rotate(-8deg) }
+.ingredients-list li:nth-child(4n + 0) .ingredient-image { transform:translateY(-50%) rotate(8deg) }
+.ingredients-list li:nth-child(4n + 1) .ingredient-image { transform:translateY(-50%) rotate(6deg) }
+.ingredients-list li:nth-child(4n + 2) .ingredient-image { transform:translateY(-50%) rotate(-7deg) }
+.ingredients-list li:nth-child(4n + 3) .ingredient-image { transform:translateY(-50%) rotate(-8deg) }
 
 
 
@@ -185,7 +260,7 @@ img.ingredients-footer-background {
 .instructions-header-area {
     position: relative;
     height: fit-content;
-    width: 90%;
+    width: var(--instructions-size);
     margin: 0;
     margin: auto;
     padding: 0;
@@ -195,7 +270,7 @@ img.ingredients-footer-background {
 .instructions-header-background {
 
     width: 100%;
-    height: 4rem;
+    height: calc(var(--line-size) * 1.6);
     margin: 0;
     margin: auto;
     z-index: 2;
@@ -213,7 +288,7 @@ img.ingredients-footer-background {
 .instructions-area{
     position: relative;
     height: fit-content;
-    width: 90%;
+    width: var(--instructions-size);
     margin: 0;
     margin: auto;
 }
@@ -232,7 +307,7 @@ img.ingredients-footer-background {
 
 .instructions-background img {
     display: block;
-    height: 10rem;
+    height: calc(var(--line-size) * 4);
     width: 100%;
     object-fit: fill;
     margin: 0;
@@ -241,7 +316,7 @@ img.ingredients-footer-background {
 
 img.instructions-footer-background {
     width: 100%;
-    height: 2.8rem;
+    height: calc(var(--line-size) * 1.12);
     object-fit: fill;
     margin: 0;
     padding: 0;
@@ -252,11 +327,11 @@ img.instructions-footer-background {
 
     width: 80%;
     margin: auto;
-    font-size: 24px;
+    font-size: calc(var(--line-size) * 0.6);
     transform: translateY(5px);
     font-family: sans-serif;
     z-index: 3;
-    line-height: 2.5rem;
+    line-height: var(--line-size);
     margin-bottom: 250px;
 }
 
