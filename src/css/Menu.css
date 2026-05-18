@@ -1,16 +1,33 @@
 #menu {
+    --menu-width: min(45vw, 30rem);
+    --menu-height: max(30rem);
+    --true-width: min(var(--menu-width), calc(var(--menu-height) * 1823 / 2021));
+
     position: absolute;
-    top: -40px;
-    left: 0px;
+    /* top: -10%; */
+    left: 0;
+    top: 0;
     z-index: 2;
-    width: 500px;
-    height: 500px;
-    transform: rotate(-3deg);
-    background-size: 500px 500px;
-    background-image: url("/Menu/Background.png");
+    width: var(--true-width);
+    height: var(--menu-height);
+    /* background-size: 500px 500px;
+    background-image: url("/Menu/Background.png"); */
     text-align: center;
 
     display: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#menu-background {
+    transform: translate(0, -10%) scale(1.12);
+    position: absolute;
+    right: 0;
+    height: 100%;
+    aspect-ratio: 912/1011;
+    /* transform: translatex(7%); */
+    z-index:-1;
 }
 
 #menu.active {
@@ -18,36 +35,45 @@
 }
 
 .search-form {
-    position: absolute;
+    /* position: absolute;
     top: 26%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
+    margin: auto;
+    margin-top: calc(var(--menu-height) * 0.11);
+    width: 70%;
 }
 
 .menu-buttons {
-    position: absolute;
-    top: 58%;
+    /* position: absolute; */
+    /* top: 58%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
+    margin-top: calc(var(--menu-height) * 0.1);
+    width: 100%;
+    line-height: 0;
 }
 
 .menu-button {
     /* position: relative; */
+    margin: calc(var(--menu-height) * 0.05) auto;
     display: block;
-    margin: 29px auto;
-    font-size: 30px;
+    font-size: 2rem;
     cursor: pointer;
     background: none;
     border: none;
     text-transform: capitalize;
+    text-align: center;
+    width: 100%;
+    padding: 0;
 }
 
 .menu-button img {
     /* position: absolute; */
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
-    margin-left: 10px;
+    width: 30px;
+    aspect-ratio: 1/1;
+    margin-right: 5px;
+    margin-left: 5px;
     vertical-align: middle; 
 }
 
@@ -65,10 +91,10 @@
 
 
 #search-bar {
-    width: 300px;
+    width: 100%;
     height: 50px;
     font-size: 30px;
-    padding-left: 10px;
+    /* padding-left: 10px; */
     border-radius: 10px;
     border: none;
     outline: solid 6px rgb(138, 138, 138);

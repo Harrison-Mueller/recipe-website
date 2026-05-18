@@ -137,7 +137,7 @@ img.ingredients-footer-background {
     width: 100%;
     margin: auto;
     /* transform: translateY(5px); */
-    font-family: sans-serif;
+    /* font-family: sans-serif; */
     z-index: 3;
     line-height: var(--line-size);
     margin-bottom: 250px;
@@ -164,7 +164,7 @@ img.ingredients-footer-background {
     position: relative;
     width: 70%;
     margin: auto;
-    font-family: sans-serif;
+    /* font-family: sans-serif; */
     /* display: flex; */
     /* clear:both; */
     display: flex;
@@ -187,7 +187,7 @@ img.ingredients-footer-background {
 .ingredient {
     /* margin-left: auto; */
     /* display: inline; */
-    font-family: sans-serif;
+    /* font-family: sans-serif; */
     /* position: absolute; */
     /* right: 50%; */
     width: 50%;
@@ -213,7 +213,7 @@ img.ingredients-footer-background {
     float: right;
     text-align: left;
     /* display: inline; */
-    font-family: sans-serif;
+    /* font-family: sans-serif; */
     /* position: absolute;
     left: 50%; */
     overflow: hidden;
@@ -329,7 +329,7 @@ img.instructions-footer-background {
     margin: auto;
     font-size: calc(var(--line-size) * 0.6);
     transform: translateY(5px);
-    font-family: sans-serif;
+    /* font-family: sans-serif; */
     z-index: 3;
     line-height: var(--line-size);
     margin-bottom: 250px;

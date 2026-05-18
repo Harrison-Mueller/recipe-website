@@ -34,6 +34,7 @@ function Menu() {
 
     return ( 
         <div id="menu" className={currentPage == "list" ? "active" : ""}>
+            <img src="Menu/Background.png" id="menu-background" />
             <form className="search-form" onSubmit={handleSearchSubmit}>
                 <input type="search" 
                     id="search-bar" 
@@ -43,7 +44,7 @@ function Menu() {
                 </input>
             </form>
             <div className="menu-buttons">
-                <button className="menu-button" id="favorites-menu-button" onClick={currentPage == "list" ? favoritesButton : undefined}>favorites<img src="/Menu/Tack.svg" /></button>
+                <button className="menu-button" id="favorites-menu-button" onClick={currentPage == "list" ? favoritesButton : undefined}>Saved<img src="/Menu/Tack.svg" /></button>
                 <button className="menu-button" id="recents-menu-button" onClick={currentPage == "list" ? recentsButton : undefined}><img src="/Menu/Hourglass.svg" />recents</button>
                 <button className="menu-button" id="refresh-menu-button" onClick={currentPage == "list" ? refreshButton : undefined}>refresh<img src="/Menu/Refresh.svg" /></button>
             </div>
