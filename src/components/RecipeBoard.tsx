@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useContext , createContext} from 'react';
 import '../css/RecipeBoard.css'
 import { context } from './Provider';
 import type { Meal } from "./RecipeCard";
@@ -13,10 +13,27 @@ function RecipeBoard() {
     const { recipeBoardJSON, setRecipeBoardJSON } = context();
     const { boardScroll, setBoardScroll } = context();
     let JSON = recipeBoardJSON;
+    const [ ingTileNumber, setIngTileNumber ] = useState(1);
+    const [ instTileNumber, setInstTileNumber ] = useState(1);
 
 
     const instRef = useRef<HTMLDivElement>(null);
     const ingRef = useRef<HTMLDivElement>(null);
+
+
+    useEffect(() => {
+        window.addEventListener('resize', updateTiles);
+    }, []);
+
+    useEffect(() => {
+        updateTiles();
+    }, [recipeBoardJSON]);
+
+    const updateTiles = () => {
+        setInstTileNumber(getInstTileNumber());
+        setIngTileNumber(getIngTileNumber());
+        console.log("Hello");
+    }
 
     const getInstTileNumber = () => {
         if(! instRef.current) return 1;
@@ -74,7 +91,7 @@ function RecipeBoard() {
                         </ul>
                     </div>
                     <div className="ingredients-background">
-                        {Array.from({ length: getIngTileNumber() }, (_, i) => (
+                        {Array.from({ length: ingTileNumber }, (_, i) => (
                             <img src="/RecipeBoard/MiddleTile.svg"/>
                         ))}
                         <img src="/RecipeBoard/Bottom.svg" className="ingredients-footer-background"/>
@@ -89,7 +106,7 @@ function RecipeBoard() {
                     <p ref={instRef} className="instructions-text" style={{ whiteSpace: "pre-line" }}>{JSON?.strInstructions}</p>
                     
                     <div className="instructions-background">
-                        {Array.from({ length: getInstTileNumber()/*Change to num and update on ResizeObserver*/ }, (_, i) => (
+                        {Array.from({ length: instTileNumber/*Change to num and update on ResizeObserver*/ }, (_, i) => (
                             <img src="/RecipeBoard/MiddleTile.svg"/>
                         ))}
                         <img src="/RecipeBoard/Bottom.svg" className="instructions-footer-background"/>

@@ -10,11 +10,12 @@
 }
 
 .background-image {
-    height: 136vh;
+    height: max(136vh, 67vw);
     /* height: 1599px; */
     /* width: 1440px; */
     position: absolute;
     top: 0;
-    left: 0;
+    left: 50%;
+    transform: translate(-50%, -27%);
     /* border: red solid 2px; */
 }
