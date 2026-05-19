@@ -43,6 +43,7 @@
 }
 
 .recipe-picture {
+    display: block;
     width: calc(var(--ingredients-size) * 0.5);
     aspect-ratio: 1/1;
     background-color: rgba(224, 175, 116, 0.6);

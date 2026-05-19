@@ -59,7 +59,8 @@ function RecipeBoard() {
     return (
         <div ref={divRef} onScroll={handleScroll} className={"recipe-board-area " + (currentPage == "board" ? "active" : "")}>
             <div className="recipe-board">
-                <div className="recipe-picture"></div>
+                {/* <div className="recipe-picture"></div> */}
+                <img className="recipe-picture" src={JSON?.strMealThumb}></img>
                 <button id="board-back-button" onClick={currentPage == "board" ? exitBoard : undefined}>Back</button>
                 <div className="ingredients-header-area">
                     <h2 className="ingredients-header">{JSON?.strMeal}</h2>
