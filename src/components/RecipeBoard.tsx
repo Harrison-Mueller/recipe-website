@@ -2,6 +2,8 @@ import { useEffect, useRef, useState, useContext , createContext} from 'react';
 import '../css/RecipeBoard.css'
 import { context } from './Provider';
 import type { Meal } from "./RecipeCard";
+import { addFavorite, removeFavorite, addRecent, checkFavorite } from '../services/api';
+
 
 
 interface Props {
@@ -15,6 +17,7 @@ function RecipeBoard() {
     let JSON = recipeBoardJSON;
     const [ ingTileNumber, setIngTileNumber ] = useState(1);
     const [ instTileNumber, setInstTileNumber ] = useState(1);
+    const [ saved, setSaved ] = useState(false);
 
 
     const instRef = useRef<HTMLDivElement>(null);
@@ -27,6 +30,7 @@ function RecipeBoard() {
 
     useEffect(() => {
         updateTiles();
+        setSaved(checkFavorite(recipeBoardJSON as Meal));
     }, [recipeBoardJSON]);
 
     const updateTiles = () => {
@@ -52,6 +56,17 @@ function RecipeBoard() {
         setBoardScroll(divRef.current ? divRef.current.scrollTop / divRef.current.scrollHeight : 0);
     };
 
+    const addToFavorite = () => {
+        console.log("Clicked on " + recipeBoardJSON?.strMeal);
+        addFavorite(recipeBoardJSON as Meal);
+        setSaved(true);
+    }
+
+    const removeFromFavorite = () => {
+        removeFavorite(recipeBoardJSON as Meal);
+        setSaved(false);
+    }
+
     const exitBoard = () => {
         setCurrentPage("list");
     }
@@ -60,7 +75,18 @@ function RecipeBoard() {
         <div ref={divRef} onScroll={handleScroll} className={"recipe-board-area " + (currentPage == "board" ? "active" : "")}>
             <div className="recipe-board">
                 {/* <div className="recipe-picture"></div> */}
-                <img className="recipe-picture" src={JSON?.strMealThumb}></img>
+                <div className="recipe-picture">
+                    <img src={JSON?.strMealThumb}></img>
+                    {
+                        saved?
+                        <button className="board-saved-button" onClick={removeFromFavorite}>
+                            <img src="/Menu/Saved.svg"/> 
+                        </button>:
+                        <button className="board-save-button" onClick={addToFavorite} >
+                        <img src="/Menu/Tack.svg"/> 
+                    </button>
+                    }
+                </div>
                 <button id="board-back-button" onClick={currentPage == "board" ? exitBoard : undefined}>Back</button>
                 <div className="ingredients-header-area">
                     <h2 className="ingredients-header">{JSON?.strMeal}</h2>

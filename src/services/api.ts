@@ -186,3 +186,39 @@ export function addFavorite(meal: Meal) {
 
     localStorage.setItem("favoriteRecipes", JSON.stringify(favorites));
 }
+
+export function removeFavorite(meal: Meal) {
+    if(meal.idMeal === "0" || meal.idMeal == null) {
+        return;
+    }
+    
+    let jsonFavorites: string|null = localStorage.getItem("favoriteRecipes");
+    let favorites: string[] = [];
+    if(jsonFavorites != null) {
+        favorites = JSON.parse(jsonFavorites);
+    }
+
+    if(favorites.includes(meal.idMeal)) {
+        favorites.splice(favorites.indexOf(meal.idMeal), 1);
+    }
+
+    localStorage.setItem("favoriteRecipes", JSON.stringify(favorites));
+}
+
+export function checkFavorite(meal: Meal) {
+    if(meal.idMeal === "0" || meal.idMeal == null) {
+        return false;
+    }
+
+    let jsonFavorites: string|null = localStorage.getItem("favoriteRecipes");
+    let favorites: string[] = [];
+    if(jsonFavorites != null) {
+        favorites = JSON.parse(jsonFavorites);
+    }
+
+    if(favorites.includes(meal.idMeal)) {
+        return true;
+    } else {
+        return false;
+    }
+}

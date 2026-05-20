@@ -1,5 +1,6 @@
 .recipe-card {
     --card-width: min(max(22vh, 7.8rem), 50vw);
+    position: relative;
 
 
     display: inline-block;
@@ -19,6 +20,34 @@
     width: calc(var(--card-width) * 0.92);
     border-radius: calc(var(--card-width) * 0.1);
     border: white solid calc(var(--card-width) * 0.04);
+}
+
+.recipe-card-save-button {
+    position: absolute;
+    top: calc(var(--card-width) * 0.05);
+    right: calc(var(--card-width) * 0.05);
+    width: 15%;
+    height: 15%;
+    opacity: 0.5;
+    display: none;
+}
+
+.recipe-card-saved-button {
+    position: absolute;
+    top: calc(var(--card-width) * -0.11);
+    right: calc(var(--card-width) * -0.06);    
+    
+    width: 20%;
+    height: 20%;
+    background: none;
+    cursor: pointer;
+    border: none;
+    /* opacity: 0.5; */
+}
+
+.recipe-card-saved-button img{
+    width: 100%;
+    height: 100%;
 }
 
 .recipe-card-name {

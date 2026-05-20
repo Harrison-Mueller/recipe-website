@@ -1,6 +1,7 @@
 import '../css/RecipeCard.css'
-import { addFavorite, addRecent } from '../services/api';
+import { addFavorite, addRecent, checkFavorite } from '../services/api';
 import { context } from './Provider';
+import { useState, useContext , createContext, useEffect} from 'react';
 
 export interface Meal {
     idMeal: string;
@@ -59,6 +60,7 @@ interface Props {
 function RecipeCard({JSON}: Props) {
     const { recipeBoardJSON, setRecipeBoardJSON } = context();
     const { currentPage, setCurrentPage } = context();
+    const [ saved, setSaved ] = useState(false);
     
     if(!JSON ||! JSON.strMeal) {
         JSON = {
@@ -69,6 +71,14 @@ function RecipeCard({JSON}: Props) {
     }
     if(!JSON.strMealThumb) {
         JSON.strMealThumb = "ImageLoading.svg";
+    }
+
+    useEffect(() => {
+        checkIfFavorite();
+    }, [JSON, currentPage]);
+
+    const checkIfFavorite = () => {
+        setSaved(checkFavorite(JSON as Meal));
     }
 
     const openRecipe = () => {
@@ -92,6 +102,14 @@ function RecipeCard({JSON}: Props) {
     return (
         <div className="recipe-card" onClick={(currentPage == "list" && JSON.idMeal !== "0") ? openRecipe : undefined}>
             <img className="recipe-card-image" src={JSON.strMealThumb} alt={JSON.strMeal}></img>
+            {
+                saved?
+                <button className="recipe-card-saved-button">
+                    <img src="/Menu/Saved.svg"/> 
+                </button>: ""
+            }
+            
+            
             <h3 className="recipe-card-name">{JSON.strMeal}</h3>
         </div>
     )
