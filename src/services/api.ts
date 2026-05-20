@@ -206,7 +206,7 @@ export function removeFavorite(meal: Meal) {
 }
 
 export function checkFavorite(meal: Meal) {
-    if(meal.idMeal === "0" || meal.idMeal == null) {
+    if(!meal || meal.idMeal == null || meal.idMeal === "0" ) {
         return false;
     }
 
