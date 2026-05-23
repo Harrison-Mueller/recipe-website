@@ -19,3 +19,22 @@
 #recipe-list.active {
     display: block;
 }
+
+#recipe-list-gradient {
+    position: fixed;
+    background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0) 40%,
+        rgba(0, 0, 0, 0.5) 45%,
+        rgba(0, 0, 0, 0.6) 50%,
+        rgba(0, 0, 0, 0.6) 80%,
+        rgba(0, 0, 0, 0.4) 95%,
+        rgba(0, 0, 0, 0) 100%
+    );
+    width: 100vw;
+    height: 100vh;
+    top:0;
+    left: 0;
+    z-index: -2;
+    pointer-events: none;
+}

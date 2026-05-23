@@ -1,6 +1,12 @@
 import '../css/Background.css'
 import { context } from './Provider';
 import { useEffect, useState, useContext , createContext } from 'react';
+import b0 from "/BoardBackgrounds/0.png";
+import b1 from "/BoardBackgrounds/1.png";
+import b2 from "/BoardBackgrounds/2.png";
+import l0 from "/ListBackgrounds/0.png";
+import l1 from "/ListBackgrounds/1.png";
+import l2 from "/ListBackgrounds/2.png";
 
 
 function Background() {
@@ -10,6 +16,9 @@ function Background() {
     // const [ images, setImages ] = useState<HTMLImageElement[]>();
     const [ backgroundIndexes, setBackgroundIndexes ] = useState<number[]>([0, 0]);
     
+
+    const boardBackgrounds = [b0, b1, b2];
+    const listBackgrounds = [l0, l1, l2];
     let offset = (currentPage === "list" ? listScroll : boardScroll) * 27;
 
     // useEffect(() => {
@@ -37,7 +46,8 @@ function Background() {
     return (
         <div id="background">
             <img className="background-image" 
-                src={currentPage === "list" ? "ListBackgrounds/" + backgroundIndexes[0] + ".png" : "BoardBackgrounds/" + backgroundIndexes[1] + ".png"} 
+                // src={currentPage === "list" ? "ListBackgrounds/" + backgroundIndexes[0] + ".png" : "BoardBackgrounds/" + backgroundIndexes[1] + ".png"} 
+                src={currentPage === "list" ? listBackgrounds[backgroundIndexes[0]] : boardBackgrounds[backgroundIndexes[1]]} 
                 style={{ transform: `translate(-50%, -${offset}%)` }}></img>
         </div>
     )

@@ -3,7 +3,7 @@ import '../css/RecipeBoard.css'
 import { context } from './Provider';
 import type { Meal } from "./RecipeCard";
 import { addFavorite, removeFavorite, addRecent, checkFavorite } from '../services/api';
-
+import woodTexture from "/RecipeBoard/WoodTexture.png"
 
 
 interface Props {
@@ -73,7 +73,8 @@ function RecipeBoard() {
 
     return (
         <div ref={divRef} onScroll={handleScroll} className={"recipe-board-area " + (currentPage == "board" ? "active" : "")}>
-            <div className="recipe-board">
+            <div className="recipe-board-gradient"></div>
+            <div className="recipe-board" style={{backgroundImage: `url(${woodTexture})`}}>
                 {/* <div className="recipe-picture"></div> */}
                 <div className="recipe-picture">
                     <img src={JSON?.strMealThumb}></img>

@@ -32,6 +32,7 @@ function RecipeList() {
         <>
             {/* <h1>Test: {recipeJSONList[0]}</h1> */}
             <div ref={divRef} onScroll={handleScroll} id="recipe-list" className={currentPage == "list" ? "active" : ""}>
+                <div id="recipe-list-gradient"></div>
                 {cards}
             </div>
         </> 

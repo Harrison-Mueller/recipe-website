@@ -1,4 +1,5 @@
 import '../css/RecipeCard.css'
+import loadingImage from "/ImageLoading.svg"
 import { addFavorite, addRecent, checkFavorite } from '../services/api';
 import { context } from './Provider';
 import { useState, useContext , createContext, useEffect} from 'react';
@@ -101,7 +102,7 @@ function RecipeCard({JSON}: Props) {
 
     return (
         <div className="recipe-card" onClick={(currentPage == "list" && JSON.idMeal !== "0") ? openRecipe : undefined}>
-            <img className="recipe-card-image" src={JSON.strMealThumb} alt={JSON.strMeal}></img>
+            <img className="recipe-card-image" src={JSON.strMealThumb == "ImageLoading.svg"? loadingImage : JSON.strMealThumb} alt={JSON.strMeal}></img>
             {
                 saved?
                 <button className="recipe-card-saved-button">
