@@ -2,22 +2,28 @@
 .recipe-board-area {
 
     position: absolute;
-    top: 0;
     left: 0;
+    top: 0;
     width: 100vw;
     height: 100vh;
     margin: 0;
     overflow-y: scroll;
     background: none;
-    /* pointer-events: none; */
-
-
-    display: none;
+    pointer-events: none;
+    
+    
+    /* top: 100vh; */
+    display: block;
+    /* transition: top 0.25s ease-in; */
 }
 
 .recipe-board-area.active {
     display: block;
+    pointer-events: all;
+    /* top: 0;
+    transition: top 0.25s ease-out; */
 }
+
 
 .recipe-board {
     /* --board-width: min(56vh, 95vw); */
@@ -33,13 +39,23 @@
     width: var(--board-width);
     height: fit-content;
     margin: auto;
-    margin-top: 5vh;
     border-radius: 2.5vh;
     box-shadow: inset 0px 0px 0px 1vh rgba(200, 144, 101, 160),
-                0px 0px 0px 0.3vh #D2A072;
+    0px 0px 0px 0.3vh #D2A072;
     padding: 1px;
     /* pointer-events: auto; */
     margin-bottom: 200px;
+    
+    
+    margin-top: 101vh;
+    transition: margin-top 0.25s ease-in;
+
+}
+
+.recipe-board-area.active .recipe-board {
+    margin-top: 5vh;
+    transition: margin-top 0.25s ease-out;
+
 }
 
 .recipe-board-gradient {
@@ -59,6 +75,15 @@
     left: 0;
     z-index: -2;
     pointer-events: none;
+
+    opacity: 0;
+    transition: opacity 0.25s ease-out;
+}
+
+.recipe-board-area.active .recipe-board-gradient {
+    opacity: 1;
+    transition: opacity 0.25s ease-out;
+
 }
 
 .recipe-picture {
@@ -139,29 +164,35 @@
     margin: auto;
     padding: 0;
     line-height: 0;
+    margin-top: 10vh;
 }
 
 .ingredients-header-background {
-
+    position: absolute;
+    bottom: 0;
     width: 100%;
-    height: calc(var(--line-size) * 1.6);
+    /* height: calc(var(--line-size) * 1.6); */
+    height: 120%;
     margin: 0;
     margin: auto;
     z-index: 2;
 }
 
 .ingredients-header {
-    position: absolute;
+    position: relative;
     width: 90%;
-    bottom: 25%;
-    left: 0;
+    /* bottom: 0;
+    left: 5%; */
     margin: auto;
     padding: 0;
     z-index: 3;
     text-align: center;
-    /* height: fit-content; */
-
-    white-space: nowrap;
+    height: fit-content;
+    padding-top: calc(var(--line-size) * 0.2);
+    padding-bottom: calc(var(--line-size) * 0.1);
+    
+    /* white-space: normal; */
+    line-height: calc(var(--line-size) * 1);
 }
 
 .ingredients-area{

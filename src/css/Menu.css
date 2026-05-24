@@ -14,10 +14,24 @@
     background-image: url("/Menu/Background.png"); */
     text-align: center;
 
-    display: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
+
+
+    display: block;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.25s ease-out;
+}
+
+#menu.active {
+    display: block;
+    pointer-events: all;
+    opacity: 1;
+
+    transition: opacity 0.25s ease-in;
+
 }
 
 #menu-background {
@@ -30,9 +44,6 @@
     z-index:-1;
 }
 
-#menu.active {
-    display: block;
-}
 
 .search-form {
     /* position: absolute;

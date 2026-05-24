@@ -54,8 +54,14 @@ function Background() {
     }, []);
 
     useEffect(() => {
-        setBackgroundIndexes([Math.floor(Math.random() * 3), Math.floor(Math.random() * 3)]);
+        // setBackgroundIndexes([Math.floor(Math.random() * 3), Math.floor(Math.random() * 3)]);
         // console.log(images? images[backgroundIndexes[0]].src : "Give me FIVE seconds!");
+        if(currentPage === "list") {
+            setBackgroundIndexes([backgroundIndexes[0], Math.floor(Math.random() * 3)]);
+        } else {
+            setBackgroundIndexes([Math.floor(Math.random() * 3), backgroundIndexes[1]]);
+        }
+    
     }, [currentPage]);
 
 
