@@ -4,6 +4,8 @@ import { context } from './Provider';
 import type { Meal } from "./RecipeCard";
 import { addFavorite, removeFavorite, addRecent, checkFavorite } from '../services/api';
 import woodTexture from "/RecipeBoard/WoodTexture.png"
+import tack from "/Menu/Tack.svg"
+import savedTack from "/Menu/Saved.svg"
 
 
 interface Props {
@@ -18,10 +20,43 @@ function RecipeBoard() {
     const [ ingTileNumber, setIngTileNumber ] = useState(1);
     const [ instTileNumber, setInstTileNumber ] = useState(1);
     const [ saved, setSaved ] = useState(false);
+    const [ images, setImages ] = useState<HTMLImageElement[]>();
 
 
     const instRef = useRef<HTMLDivElement>(null);
     const ingRef = useRef<HTMLDivElement>(null);
+
+
+    function loadImages (images: string[]) {
+        let loader = function (src: string) {
+          return new Promise<HTMLImageElement>(function (resolve, reject) {
+            let img = new Image();
+            img.onload = function () {
+              resolve(img);
+            };
+            img.onerror = function (err) {
+              reject(err);
+            };
+            img.src = src;
+          });
+        };
+
+        let loaders: Promise<HTMLImageElement>[] = [];
+        images.forEach(function (image: string) {
+          loaders.push(loader(image));
+        });
+
+        return Promise.all(loaders);
+    }
+
+    useEffect(() => {
+        loadImages([woodTexture, tack, savedTack]).then((is) => {
+            console.log("Images Loaded!");
+            setImages(is);
+        }).catch(function (err) {
+            console.error(err);
+        });
+    }, []);
 
 
     useEffect(() => {
@@ -81,10 +116,10 @@ function RecipeBoard() {
                     {
                         saved?
                         <button className="board-saved-button" onClick={removeFromFavorite}>
-                            <img src="/Menu/Saved.svg"/> 
+                            <img src={savedTack}/> 
                         </button>:
                         <button className="board-save-button" onClick={addToFavorite} >
-                        <img src="/Menu/Tack.svg"/> 
+                        <img src={tack}/> 
                     </button>
                     }
                 </div>

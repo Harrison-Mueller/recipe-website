@@ -62,6 +62,7 @@ function RecipeCard({JSON}: Props) {
     const { recipeBoardJSON, setRecipeBoardJSON } = context();
     const { currentPage, setCurrentPage } = context();
     const [ saved, setSaved ] = useState(false);
+    const [ images, setImages ] = useState<HTMLImageElement>();
     
     if(!JSON ||! JSON.strMeal) {
         JSON = {
@@ -73,6 +74,28 @@ function RecipeCard({JSON}: Props) {
     if(!JSON.strMealThumb) {
         JSON.strMealThumb = "ImageLoading.svg";
     }
+
+    useEffect(() => {
+        let loader = function (src: string) {
+            return new Promise<HTMLImageElement>(function (resolve, reject) {
+              let img = new Image();
+              img.onload = function () {
+                resolve(img);
+              };
+              img.onerror = function (err) {
+                reject(err);
+              };
+              img.src = src;
+            });
+        };
+
+        loader(loadingImage).then((is) => {
+            console.log("Image Loaded!");
+            setImages(is);
+        }).catch(function (err) {
+            console.error(err);
+        });
+    }, []);
 
     useEffect(() => {
         checkIfFavorite();
