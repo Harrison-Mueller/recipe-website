@@ -64,6 +64,10 @@ function RecipeBoard() {
     }, []);
 
     useEffect(() => {
+        divRef.current? divRef.current.scrollTop = 0 : "";
+    }, [currentPage])
+
+    useEffect(() => {
         updateTiles();
         setSaved(checkFavorite(recipeBoardJSON as Meal));
     }, [recipeBoardJSON]);

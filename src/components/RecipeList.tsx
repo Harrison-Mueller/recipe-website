@@ -1,4 +1,4 @@
-import { useContext, useRef } from 'react';
+import { useContext, useRef, useEffect } from 'react';
 import { context } from './Provider';
 import '../css/RecipeList.css'
 
@@ -21,6 +21,13 @@ function RecipeList() {
     } else {
         <RecipeCard key={12345}/>
     }
+
+    useEffect(() => {
+        divRef.current? divRef.current.scrollTo({
+            top: 0,
+            behavior: 'smooth'   // ← makes it smooth
+          }) : "";
+    }, [recipeJSONList])
     
 
     const divRef = useRef<HTMLDivElement>(null);
