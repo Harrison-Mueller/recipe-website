@@ -57,25 +57,44 @@ function Background() {
         // setBackgroundIndexes([Math.floor(Math.random() * 3), Math.floor(Math.random() * 3)]);
         // console.log(images? images[backgroundIndexes[0]].src : "Give me FIVE seconds!");
         if(currentPage === "list") {
+            console.log("Switching to LIST");
             setBackgroundIndexes([backgroundIndexes[0], Math.floor(Math.random() * 3)]);
         } else {
+            console.log("Switching to BOARD");
             setBackgroundIndexes([Math.floor(Math.random() * 3), backgroundIndexes[1]]);
         }
     
     }, [currentPage]);
 
+    const activeBackground = currentPage === "list" ? backgroundIndexes[0] : backgroundIndexes[1] + 3;
 
     return (
         <div id="background">
-            <img className="background-image" 
-                // src={currentPage === "list" ? "ListBackgrounds/" + backgroundIndexes[0] + ".png" : "BoardBackgrounds/" + backgroundIndexes[1] + ".png"} 
-                src={
-                    currentPage === "list" ?
-                    (images? listBackgrounds[backgroundIndexes[0]] : "/ImageLoading.svg") :
-                    (images? boardBackgrounds[backgroundIndexes[1]] : "/ImageLoading.svg")
-                } 
-                // src={currentPage === "list" ? (images?[backgroundIndexes[0]] : "null") : (images?[backgroundIndexes[1]] : "null")} 
-                style={{ transform: `translate(-50%, -${offset}%)` }}></img>
+            <img className={"list-background-image " + (activeBackground === 0 ? "active" : "unactive")}
+                src={ images? listBackgrounds[0] : "/ImageLoading.svg" } 
+                style={{ transform: `translate(-50%, -${offset}%)`}} 
+            />
+            <img className={"list-background-image " + (activeBackground === 1 ? "active" : "unactive")}
+                src={ images? listBackgrounds[1] : "/ImageLoading.svg" } 
+                style={{ transform: `translate(-50%, -${offset}%)`}} 
+            />
+            <img className={"list-background-image " + (activeBackground === 2 ? "active" : "unactive")}
+                src={ images? listBackgrounds[2] : "/ImageLoading.svg" } 
+                style={{ transform: `translate(-50%, -${offset}%)`}} 
+            />
+
+            <img className={"board-background-image " + (activeBackground === 3 ? "active" : "unactive")}
+                src={ images? boardBackgrounds[0] : "/ImageLoading.svg" } 
+                style={{ transform: `translate(-50%, -${offset}%)`}} 
+            />
+            <img className={"board-background-image " + (activeBackground === 4 ? "active" : "unactive")}
+                src={ images? boardBackgrounds[1] : "/ImageLoading.svg" } 
+                style={{ transform: `translate(-50%, -${offset}%)`}} 
+            />
+            <img className={"board-background-image " + (activeBackground === 5 ? "active" : "unactive")}
+                src={ images? boardBackgrounds[2] : "/ImageLoading.svg" } 
+                style={{ transform: `translate(-50%, -${offset}%)`}} 
+            />
         </div>
     )
 }

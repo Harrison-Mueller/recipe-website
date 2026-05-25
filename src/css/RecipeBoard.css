@@ -14,12 +14,16 @@
     
     /* top: 100vh; */
     display: block;
+    opacity: 0;
+    transition: opacity 0s ease-out 0.25s;
     /* transition: top 0.25s ease-in; */
 }
 
 .recipe-board-area.active {
     display: block;
     pointer-events: all;
+    opacity: 1;
+    transition: opacity 0s ease-out 0s;
     /* top: 0;
     transition: top 0.25s ease-out; */
 }
