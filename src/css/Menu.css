@@ -66,7 +66,7 @@
 }
 
 .menu-button {
-    /* position: relative; */
+    position: relative;
     margin: calc(var(--menu-height) * 0.05) auto;
     display: block;
     font-size: 2rem;
@@ -77,6 +77,21 @@
     text-align: center;
     width: 100%;
     padding: 0;
+
+    transform: scale(1);
+    /* transition: transform 0.2s ease-in; */
+    transition: transform 0.2s ease-in;
+
+}
+
+.menu-button:hover {
+    transform: translatex(1%);
+    transition: transform 0s ease-in;
+}
+
+.menu-button:active {
+    transform: scale(0.9) translatex(1.5%);
+    transition: transform 0s ease-in;
 }
 
 .menu-button img {

@@ -14,6 +14,33 @@
     cursor: pointer;
 
     font-size: min(calc(var(--card-width) * 0.13), 1rem);
+
+    transition: transform 0.5s ease-in-out;
+}
+
+.recipe-card:nth-child(even):hover {
+    transform: rotate(1.5deg);
+    transition: transform 0.1s ease-out;
+}
+
+.recipe-card:nth-child(odd):hover {
+    transform: rotate(-1.5deg);
+    transition: transform 0.1s ease-out;
+}
+
+.recipe-card:nth-child(3n - 2):hover {
+    transform: rotate(-1.5deg)!important;
+    transition: transform 0.1s ease-out;
+}
+
+.recipe-card:nth-child(5n - 1):hover {
+    transform: rotate(1.5deg)!important;
+    transition: transform 0.1s ease-out;
+}
+
+div.recipe-card:nth-child(n):active {
+    transform: scale(0.9)!important;
+    transition: transform 0s ease-out;
 }
 
 .recipe-card-image {
