@@ -20,42 +20,42 @@ function RecipeBoard() {
     const [ ingTileNumber, setIngTileNumber ] = useState(1);
     const [ instTileNumber, setInstTileNumber ] = useState(1);
     const [ saved, setSaved ] = useState(false);
-    const [ images, setImages ] = useState<HTMLImageElement[]>();
+    // const [ images, setImages ] = useState<HTMLImageElement[]>();
 
 
     const instRef = useRef<HTMLDivElement>(null);
     const ingRef = useRef<HTMLDivElement>(null);
 
 
-    function loadImages (images: string[]) {
-        let loader = function (src: string) {
-          return new Promise<HTMLImageElement>(function (resolve, reject) {
-            let img = new Image();
-            img.onload = function () {
-              resolve(img);
-            };
-            img.onerror = function (err) {
-              reject(err);
-            };
-            img.src = src;
-          });
-        };
+    // function loadImages (images: string[]) {
+    //     let loader = function (src: string) {
+    //       return new Promise<HTMLImageElement>(function (resolve, reject) {
+    //         let img = new Image();
+    //         img.onload = function () {
+    //           resolve(img);
+    //         };
+    //         img.onerror = function (err) {
+    //           reject(err);
+    //         };
+    //         img.src = src;
+    //       });
+    //     };
 
-        let loaders: Promise<HTMLImageElement>[] = [];
-        images.forEach(function (image: string) {
-          loaders.push(loader(image));
-        });
+    //     let loaders: Promise<HTMLImageElement>[] = [];
+    //     images.forEach(function (image: string) {
+    //       loaders.push(loader(image));
+    //     });
 
-        return Promise.all(loaders);
-    }
+    //     return Promise.all(loaders);
+    // }
 
     useEffect(() => {
-        loadImages([woodTexture, tack, savedTack]).then((is) => {
-            console.log("Images Loaded!");
-            setImages(is);
-        }).catch(function (err) {
-            console.error(err);
-        });
+        // loadImages([woodTexture, tack, savedTack]).then((is) => {
+        //     console.log("Images Loaded!");
+        //     setImages(is);
+        // }).catch(function (err) {
+        //     console.error(err);
+        // });
     }, []);
 
 
@@ -120,11 +120,11 @@ function RecipeBoard() {
                     {
                         saved?
                         <button className="board-saved-button" onClick={removeFromFavorite}>
-                            <img src={savedTack}/> 
+                            <img key={Math.random()} src={savedTack}/> 
                         </button>:
                         <button className="board-save-button" onClick={addToFavorite} >
-                        <img src={tack}/> 
-                    </button>
+                            <img key={Math.random()} src={tack}/> 
+                        </button>
                     }
                 </div>
                 <button id="board-back-button" onClick={currentPage == "board" ? exitBoard : undefined}>Back</button>

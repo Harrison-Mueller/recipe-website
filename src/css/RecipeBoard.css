@@ -131,6 +131,20 @@
     border: none;
 }
 
+.board-saved-button:hover img{
+    width: 95%;
+    height: 95%;
+    margin-top: 5%;
+    margin-right: 4%;
+}
+
+.board-saved-button:active img{
+    width: 110%;
+    height: 110%;
+    margin-right: -27%;
+    margin-top: -27%;
+}
+
 .board-save-button {
     position: absolute;
     top: 2%;
@@ -147,10 +161,25 @@
 }
 
 .board-save-button img{
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    height: 90%;
+    margin: auto;
+    margin-top: 5%;
     border: none;
 }
+
+.board-save-button:hover img{
+    width: 100%;
+    height: 100%;
+    margin-top: 0%;
+}
+
+.board-save-button:active img{
+    width: 85%;
+    height: 85%;
+    margin-top: 15%;
+}
+
 
 .recipe-board h2 {
     font-size: calc(var(--line-size));
