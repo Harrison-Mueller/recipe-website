@@ -35,9 +35,10 @@
     --line-size: min(2rem, var(--board-width) * 0.06);
     --ingredients-size: min(var(--line-size) * 17, calc(var(--board-width) * 0.9));
     --instructions-size: min(var(--line-size) * 21, calc(var(--board-width) * 0.9));
-
+    --back-size: var(--line-size);
     /* background-color: rgb(255, 255, 255); */
     /* background-image: url("/RecipeBoard/WoodTexture.png"); */
+    position: relative;
     background-repeat: repeat;
     background-size: 50% auto;
     width: var(--board-width);
@@ -88,6 +89,42 @@
     opacity: 1;
     transition: opacity 0.25s ease-out;
 
+}
+
+#board-back-button {
+    position: absolute;
+    top: calc(var(--board-width) * 0.02);
+    left: calc(var(--board-width) * 0.02);
+    width: calc(var(--back-size) * 3.8);
+    height: calc(var(--back-size) * 1.4);
+    cursor: pointer;
+    background: none;
+    border: none;
+    opacity: 0.56;
+}
+
+#board-back-button:hover {
+    transform: scale(0.95);
+}
+
+#board-back-button:active {
+    transform: scale(0.9);
+}
+
+#board-back-button img {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 75%;
+}
+
+#board-back-button span {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80%;
+    font-size: calc(var(--back-size) * 1);
+    color: #371900;
 }
 
 .recipe-picture {

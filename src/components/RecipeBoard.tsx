@@ -6,6 +6,7 @@ import { addFavorite, removeFavorite, addRecent, checkFavorite } from '../servic
 import woodTexture from "/RecipeBoard/WoodTexture.png"
 import tack from "/Menu/Tack.svg"
 import savedTack from "/Menu/Saved.svg"
+import backArrow from "/RecipeBoard/BackArrow.svg"
 
 
 interface Props {
@@ -127,7 +128,10 @@ function RecipeBoard() {
                         </button>
                     }
                 </div>
-                <button id="board-back-button" onClick={currentPage == "board" ? exitBoard : undefined}>Back</button>
+                <button id="board-back-button" onClick={currentPage == "board" ? exitBoard : undefined}>
+                    <span>Back</span>
+                    <img src={backArrow}/>
+                </button>
                 <div className="ingredients-header-area">
                     <h2 className="ingredients-header">{JSON?.strMeal}</h2>
                     <img src="/RecipeBoard/Top.svg" className="ingredients-header-background"/>
