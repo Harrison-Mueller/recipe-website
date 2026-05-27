@@ -53,8 +53,8 @@ function Menu() {
             </form>
             <div className="menu-buttons">
                 <button className="menu-button" id="favorites-menu-button" onClick={currentPage == "list" ? favoritesButton : undefined}>Saved<img src={tack} /></button>
-                <button className="menu-button" id="recents-menu-button" onClick={currentPage == "list" ? recentsButton : undefined}><img src={hourglass} />recents</button>
-                <button className="menu-button" id="refresh-menu-button" onClick={currentPage == "list" ? refreshButton : undefined}>refresh<img src={refresh} /></button>
+                <button className="menu-button" id="recents-menu-button" onClick={currentPage == "list" ? recentsButton : undefined}><img src={hourglass} />recent</button>
+                <button className="menu-button" id="refresh-menu-button" onClick={currentPage == "list" ? refreshButton : undefined}>random<img src={refresh} /></button>
             </div>
         </div>
     )
