@@ -9,17 +9,6 @@
     overflow:hidden;
 }
 
-.board-background-image.unactive, .list-background-image.unactive {
-    position: absolute;
-    height: 1px;
-    width: 1px;
-    bottom: 0;
-    left: 0;
-    z-index: 100;
-    opacity: 0.3;
-    transform: scale(1)!important;
-}
-
 
 .board-background-image.active {
     height: max(136vh, 67vw);

@@ -7,6 +7,9 @@ import woodTexture from "/RecipeBoard/WoodTexture.png"
 import tack from "/Menu/Tack.svg"
 import savedTack from "/Menu/Saved.svg"
 import backArrow from "/RecipeBoard/BackArrow.svg"
+import top from "/RecipeBoard/Top.svg"
+import middleTile from "/RecipeBoard/MiddleTile.svg"
+import bottom from "/RecipeBoard/Bottom.svg"
 
 
 interface Props {
@@ -134,7 +137,7 @@ function RecipeBoard() {
                 </button>
                 <div className="ingredients-header-area">
                     <h2 className="ingredients-header">{JSON?.strMeal}</h2>
-                    <img src="/RecipeBoard/Top.svg" className="ingredients-header-background"/>
+                    <img src={top} className="ingredients-header-background"/>
                 </div>
                 <div className="ingredients-area">
                     <div ref={ingRef} className="ingredients-text">
@@ -163,24 +166,24 @@ function RecipeBoard() {
                     </div>
                     <div className="ingredients-background">
                         {Array.from({ length: ingTileNumber }, (_, i) => (
-                            <img src="/RecipeBoard/MiddleTile.svg"/>
+                            <img src={middleTile}/>
                         ))}
-                        <img src="/RecipeBoard/Bottom.svg" className="ingredients-footer-background"/>
+                        <img src={bottom} className="ingredients-footer-background"/>
                     </div>
                 </div>
 
                 <div className="instructions-header-area">
                     <h2 className="instructions-header">Instructions:</h2>
-                    <img src="/RecipeBoard/Top.svg" className="instructions-header-background"/>
+                    <img src={top} className="instructions-header-background"/>
                 </div>
                 <div className="instructions-area">
                     <p ref={instRef} className="instructions-text" style={{ whiteSpace: "pre-line" }}>{JSON?.strInstructions}</p>
                     
                     <div className="instructions-background">
                         {Array.from({ length: instTileNumber/*Change to num and update on ResizeObserver*/ }, (_, i) => (
-                            <img src="/RecipeBoard/MiddleTile.svg"/>
+                            <img src={middleTile}/>
                         ))}
-                        <img src="/RecipeBoard/Bottom.svg" className="instructions-footer-background"/>
+                        <img src={bottom} className="instructions-footer-background"/>
                     </div>
                 </div>
 
