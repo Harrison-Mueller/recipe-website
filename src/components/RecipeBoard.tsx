@@ -79,7 +79,6 @@ function RecipeBoard() {
     const updateTiles = () => {
         setInstTileNumber(getInstTileNumber());
         setIngTileNumber(getIngTileNumber());
-        console.log("Hello");
     }
 
     const getInstTileNumber = () => {
