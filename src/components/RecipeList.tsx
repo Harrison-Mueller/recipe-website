@@ -42,6 +42,7 @@ function RecipeList() {
             <div ref={divRef} onScroll={handleScroll} id="recipe-list" className={currentPage == "list" ? "active" : ""}>
                 <div id="recipe-list-gradient"></div>
                 {cards}
+                <div className="list-bottom-space" />
             </div>
         </> 
     )

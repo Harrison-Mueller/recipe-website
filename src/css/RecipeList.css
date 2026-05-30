@@ -20,6 +20,12 @@
 
 }
 
+.list-bottom-space {
+    height: 20vh;
+    width: 100%;
+    
+}
+
 #recipe-list > div {
     opacity: 0;
     transition: opacity 0.25s ease-out;
