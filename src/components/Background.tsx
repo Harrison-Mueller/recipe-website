@@ -65,33 +65,33 @@ function Background() {
     return (
         <div id="background">
             <img className={"list-background-image " + (activeBackground === 0 ? "active" : "hidden-preload")}
-                src={ "/ListBackgrounds/0p" + backgroundResolution + ".png" } 
+                src={ "/recipe-website/ListBackgrounds/0p" + backgroundResolution + ".png" } 
                 style={{ transform: `translate(-50%, -${offset}%)`}} 
                 aria-hidden={activeBackground === 0 ? "false" : "true"}
             />
             <img className={"list-background-image " + (activeBackground === 1 ? "active" : "hidden-preload")}
-                src={ "/ListBackgrounds/1p" + backgroundResolution + ".png" } 
+                src={ "/recipe-website/ListBackgrounds/1p" + backgroundResolution + ".png" } 
                 style={{ transform: `translate(-50%, -${offset}%)`}} 
                 aria-hidden={activeBackground === 2 ? "false" : "true"}
             />
             <img className={"list-background-image " + (activeBackground === 2 ? "active" : "hidden-preload")}
-                src={ "/ListBackgrounds/2p" + backgroundResolution + ".png" } 
+                src={ "/recipe-website/ListBackgrounds/2p" + backgroundResolution + ".png" } 
                 style={{ transform: `translate(-50%, -${offset}%)`}} 
                 aria-hidden={activeBackground === 3 ? "false" : "true"}
             />
 
             <img className={"board-background-image " + (activeBackground === 3 ? "active" : "hidden-preload")}
-                src={ "/BoardBackgrounds/0p" + backgroundResolution + ".png" } 
+                src={ "/recipe-website/BoardBackgrounds/0p" + backgroundResolution + ".png" } 
                 style={{ transform: `translate(-50%, -${offset}%)`}} 
                 aria-hidden={activeBackground === 4 ? "false" : "true"}
             />
             <img className={"board-background-image " + (activeBackground === 4 ? "active" : "hidden-preload")}
-                src={ "/BoardBackgrounds/0p" + backgroundResolution + ".png" } 
+                src={ "/recipe-website/BoardBackgrounds/0p" + backgroundResolution + ".png" } 
                 style={{ transform: `translate(-50%, -${offset}%)`}} 
                 aria-hidden={activeBackground === 5 ? "false" : "true"}
             />
             <img className={"board-background-image " + (activeBackground === 5 ? "active" : "hidden-preload")}
-                src={ "/BoardBackgrounds/0p" + backgroundResolution + ".png"} 
+                src={ "/recipe-website/BoardBackgrounds/0p" + backgroundResolution + ".png"} 
                 style={{ transform: `translate(-50%, -${offset}%)`}} 
                 aria-hidden={activeBackground === 6 ? "false" : "true"}
             />

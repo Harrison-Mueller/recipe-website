@@ -1,5 +1,6 @@
 import '../css/RecipeCard.css'
 import loadingImage from "/ImageLoading.svg"
+import savedTack from "/Menu/Saved.svg"
 import { addRecent, checkFavorite } from '../services/api';
 import { context } from './Provider';
 import { useState, useEffect} from 'react';
@@ -99,7 +100,7 @@ function RecipeCard({JSON}: Props) {
             {
                 saved?
                 <button className="recipe-card-saved-button">
-                    <img src="/Menu/Saved.svg"/> 
+                    <img src={savedTack}/> 
                 </button>: ""
             }
             
