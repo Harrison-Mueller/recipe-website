@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState, useContext , createContext} from 'react';
+import { useEffect, useRef, useState} from 'react';
 import '../css/RecipeBoard.css'
 import { context } from './Provider';
 import type { Meal } from "./RecipeCard";
-import { addFavorite, removeFavorite, addRecent, checkFavorite } from '../services/api';
+import { addFavorite, removeFavorite, checkFavorite } from '../services/api';
 import woodTexture from "/RecipeBoard/WoodTexture.png"
 import tack from "/Menu/Tack.svg"
 import savedTack from "/Menu/Saved.svg"
@@ -12,14 +12,10 @@ import middleTile from "/RecipeBoard/MiddleTile.svg"
 import bottom from "/RecipeBoard/Bottom.svg"
 
 
-interface Props {
-    boardRecipeJSON: string;
-}
-
 function RecipeBoard() {
     const { currentPage, setCurrentPage } = context();
-    const { recipeBoardJSON, setRecipeBoardJSON } = context();
-    const { boardScroll, setBoardScroll } = context();
+    const { recipeBoardJSON } = context();
+    const { setBoardScroll } = context();
     let JSON = recipeBoardJSON;
     const [ ingTileNumber, setIngTileNumber ] = useState(1);
     const [ instTileNumber, setInstTileNumber ] = useState(1);
@@ -164,7 +160,7 @@ function RecipeBoard() {
                         </ul>
                     </div>
                     <div className="ingredients-background">
-                        {Array.from({ length: ingTileNumber }, (_, i) => (
+                        {Array.from({ length: ingTileNumber }, (_) => (
                             <img src={middleTile}/>
                         ))}
                         <img src={bottom} className="ingredients-footer-background"/>
@@ -179,7 +175,7 @@ function RecipeBoard() {
                     <p ref={instRef} className="instructions-text" style={{ whiteSpace: "pre-line" }}>{JSON?.strInstructions}</p>
                     
                     <div className="instructions-background">
-                        {Array.from({ length: instTileNumber/*Change to num and update on ResizeObserver*/ }, (_, i) => (
+                        {Array.from({ length: instTileNumber/*Change to num and update on ResizeObserver*/ }, (_) => (
                             <img src={middleTile}/>
                         ))}
                         <img src={bottom} className="instructions-footer-background"/>

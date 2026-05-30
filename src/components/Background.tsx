@@ -1,6 +1,6 @@
 import '../css/Background.css'
 import { context } from './Provider';
-import { useEffect, useState, useContext , createContext } from 'react';
+import { useEffect, useState } from 'react';
 // import b0 from "/BoardBackgrounds/0-1440p.png";
 // import b1 from "/BoardBackgrounds/1-1440p.png";
 // import b2 from "/BoardBackgrounds/2-1440p.png";
@@ -10,9 +10,9 @@ import { useEffect, useState, useContext , createContext } from 'react';
 
 
 function Background() {
-    const { listScroll, setListScroll } = context();
-    const { boardScroll, setBoardScroll } = context();
-    const { currentPage, setCurrentPage } = context();
+    const { listScroll } = context();
+    const { boardScroll } = context();
+    const { currentPage } = context();
     const [ backgroundResolution, setBackgroundResolution ] = useState("0");
     const [ backgroundIndexes, setBackgroundIndexes ] = useState<number[]>([0, 0]);
     
@@ -22,27 +22,6 @@ function Background() {
     let offset = (currentPage === "list" ? listScroll : boardScroll) * 27;
 
 
-    function loadImages (images: string[]) {
-        let loader = function (src: string) {
-          return new Promise<HTMLImageElement>(function (resolve, reject) {
-            let img = new Image();
-            img.onload = function () {
-              resolve(img);
-            };
-            img.onerror = function (err) {
-              reject(err);
-            };
-            img.src = src;
-          });
-        };
-
-        let loaders: Promise<HTMLImageElement>[] = [];
-        images.forEach(function (image: string) {
-          loaders.push(loader(image));
-        });
-
-        return Promise.all(loaders);
-    }
 
     useEffect(() => {
         window.addEventListener('resize', updateResolution);

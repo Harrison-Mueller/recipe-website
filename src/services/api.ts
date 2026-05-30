@@ -3,9 +3,9 @@ import type { Meal } from "../components/RecipeCard";
 const API_KEY = "1";
 const API_URL = "https://www.themealdb.com/api/json/v1/" + API_KEY + "/";
 
-const delay = (ms: number): Promise<void> => {//simulates delay TEMP
-    return new Promise(resolve => setTimeout(resolve, ms));
-};
+// const delay = (ms: number): Promise<void> => {//simulates delay TEMP
+//     return new Promise(resolve => setTimeout(resolve, ms));
+// };
 
 export const getRandom = async (setRecipeList: (recipeJSONList: Meal[]) => void) => {
     setRecipeList(Array.from({ length: 25 }, () => ({} as Meal)));
@@ -93,6 +93,7 @@ export const getRecents = async (setRecipeList: (recipeJSONList: Meal[]) => void
             })
             .catch(function(error) {
                 console.error("Error fetching random meal:", error);
+                console.log("Reading this so it  doesn't feel left out: " + recentId);
             })
     );
 

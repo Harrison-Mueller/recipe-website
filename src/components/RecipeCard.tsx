@@ -2,7 +2,7 @@ import '../css/RecipeCard.css'
 import loadingImage from "/ImageLoading.svg"
 import { addFavorite, addRecent, checkFavorite } from '../services/api';
 import { context } from './Provider';
-import { useState, useContext , createContext, useEffect} from 'react';
+import { useState, useEffect} from 'react';
 
 export interface Meal {
     idMeal: string;
@@ -59,10 +59,9 @@ interface Props {
 }
 
 function RecipeCard({JSON}: Props) {
-    const { recipeBoardJSON, setRecipeBoardJSON } = context();
+    const { setRecipeBoardJSON } = context();
     const { currentPage, setCurrentPage } = context();
     const [ saved, setSaved ] = useState(false);
-    const [ images, setImages ] = useState<HTMLImageElement>();
     
     if(!JSON ||! JSON.strMeal) {
         JSON = {
@@ -76,25 +75,7 @@ function RecipeCard({JSON}: Props) {
     }
 
     useEffect(() => {
-        let loader = function (src: string) {
-            return new Promise<HTMLImageElement>(function (resolve, reject) {
-              let img = new Image();
-              img.onload = function () {
-                resolve(img);
-              };
-              img.onerror = function (err) {
-                reject(err);
-              };
-              img.src = src;
-            });
-        };
 
-        loader(loadingImage).then((is) => {
-            console.log("Image Loaded!");
-            setImages(is);
-        }).catch(function (err) {
-            console.error(err);
-        });
     }, []);
 
     useEffect(() => {
@@ -110,17 +91,6 @@ function RecipeCard({JSON}: Props) {
         setRecipeBoardJSON(JSON as Meal);
         setCurrentPage("board");
         addRecent(JSON as Meal);
-    }
-
-    const addToRecent = () => {
-        console.log("Clicked on " + JSON.strMeal);
-        setRecipeBoardJSON(JSON as Meal);
-        addRecent(JSON as Meal);
-    }
-
-    const addToFavorite = () => {
-        console.log("Clicked on " + JSON.strMeal);
-        addFavorite(JSON as Meal);
     }
 
     return (

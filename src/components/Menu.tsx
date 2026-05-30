@@ -10,8 +10,8 @@ import search from "/Menu/Search.svg";
 
 function Menu() {
     const [searchTerm, setSearchTerm] = useState('');
-    const { recipeJSONList, setRecipeJSONList } = context();
-    const { currentPage, setCurrentPage } = context();
+    const { setRecipeJSONList } = context();
+    const { currentPage } = context();
 
 
     const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {

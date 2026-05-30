@@ -1,4 +1,4 @@
-import { useContext, useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import { context } from './Provider';
 import '../css/RecipeList.css'
 
@@ -7,9 +7,9 @@ import RecipeCard from './RecipeCard'
 
 
 function RecipeList() {
-    const { listScroll, setListScroll } = context();
-    const { currentPage, setCurrentPage } = context();
-    const { recipeJSONList, setRecipeJSONList } = context();
+    const { setListScroll } = context();
+    const { currentPage } = context();
+    const { recipeJSONList } = context();
     
     let cards = [];
     
