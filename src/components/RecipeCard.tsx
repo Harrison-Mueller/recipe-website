@@ -1,6 +1,6 @@
 import '../css/RecipeCard.css'
 import loadingImage from "/ImageLoading.svg"
-import { addFavorite, addRecent, checkFavorite } from '../services/api';
+import { addRecent, checkFavorite } from '../services/api';
 import { context } from './Provider';
 import { useState, useEffect} from 'react';
 
