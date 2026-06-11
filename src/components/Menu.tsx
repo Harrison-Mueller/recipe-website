@@ -1,7 +1,7 @@
 import '../css/Menu.css'
 import { context } from './Provider';
 import { getFavorites, getRecents, getRandom, searchRecipes } from '../services/api';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import tack from "/Menu/Tack.svg";
 import hourglass from "/Menu/Hourglass.svg";
 import refresh from "/Menu/Refresh.svg";
@@ -35,6 +35,11 @@ function Menu() {
     const refreshButton = () => {
         getRandom(setRecipeJSONList);
     }
+
+    useEffect(() => {
+        console.log("Start Load");
+        getRandom(setRecipeJSONList);
+    }, []);
 
     return ( 
         <div id="menu" className={currentPage == "list" ? "active" : ""}>
