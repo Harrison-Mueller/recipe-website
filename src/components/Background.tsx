@@ -86,12 +86,12 @@ function Background() {
                 aria-hidden={activeBackground === 4 ? "false" : "true"}
             />
             <img className={"board-background-image " + (activeBackground === 4 ? "active" : "hidden-preload")}
-                src={ "/recipe-website/BoardBackgrounds/0p" + backgroundResolution + ".png" } 
+                src={ "/recipe-website/BoardBackgrounds/1p" + backgroundResolution + ".png" } 
                 style={{ transform: `translate(-50%, -${offset}%)`}} 
                 aria-hidden={activeBackground === 5 ? "false" : "true"}
             />
             <img className={"board-background-image " + (activeBackground === 5 ? "active" : "hidden-preload")}
-                src={ "/recipe-website/BoardBackgrounds/0p" + backgroundResolution + ".png"} 
+                src={ "/recipe-website/BoardBackgrounds/2p" + backgroundResolution + ".png"} 
                 style={{ transform: `translate(-50%, -${offset}%)`}} 
                 aria-hidden={activeBackground === 6 ? "false" : "true"}
             />
