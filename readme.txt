@@ -1,6 +1,6 @@
 # Recipe Website #
 
-This is a react.js front end built for TheMealDB API.
+This is a react.ts front end built for TheMealDB API.
 
 
 # API Link #
@@ -10,7 +10,7 @@ https://www.themealdb.com/api.php
 
 # Live Demo #
 
-https://mealrecipes.placeholder.replacelater
+https://harrison-mueller.github.io/recipe-website/
 
 
 # GitHub Repository #
